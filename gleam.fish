@@ -6,7 +6,14 @@ set -l targets erlang javascript
 set -l runtimes nodejs deno bun
 
 function __fish_gleam_project_root
-    # TODO get project root (parent dir with gleam.toml)
+    # get project root (parent dir with gleam.toml)
+    for dir in (__fish_parent_directories (pwd --physical))
+        if test -f $dir/gleam.toml
+            echo $dir
+            return 0
+        end
+    end
+    return 1
 end
 
 function __fish_gleam_runnable_module
