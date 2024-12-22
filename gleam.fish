@@ -20,7 +20,7 @@ function __fish_gleam_runnable_module
     # TODO list files under src and test with a main function
 end
 
-function __fish_gleam_dependencies
+function __fish_gleam_deps_direct
     # 'gleam deps list' gives all dependencies but 'gleam remove' takes only
     # direct project dependencies listed in 'gleam.toml'
     if not set -l project_root (__fish_gleam_project_root)
@@ -36,6 +36,15 @@ function __fish_gleam_dependencies
     end
     printf '%s\n' $dependencies
     return 0
+end
+
+function __fish_gleam_deps_all
+    # 'gleam deps list' gives an error when used outside a gleam project
+    if set -l project_root (__fish_gleam_project_root)
+        printf '%s\n' (gleam deps list | string split -f1 " ")
+        return 0
+    end
+    return 1
 end
 
 function __fish_gleam_hex_packages
@@ -85,8 +94,8 @@ complete -c gleam -n '__fish_seen_subcommand_from add' -rf -a '(__fish_gleam_hex
 complete -c gleam -n '__fish_seen_subcommand_from deps' -a list     -d "List all dependency packages"
 complete -c gleam -n '__fish_seen_subcommand_from deps' -a download -d "Download all dependency packages"
 complete -c gleam -n '__fish_seen_subcommand_from deps' -a update   -d "Update dependencies to their latest versions"
-complete -c gleam -n '__fish_seen_subcommand_from remove' -rf -a '(__fish_gleam_dependencies)'
-complete -c gleam -n '__fish_seen_subcommand_from update' -rf -a '(gleam deps list | string split -f1 " ")'
+complete -c gleam -n '__fish_seen_subcommand_from remove' -rf -a '(__fish_gleam_deps_direct)'
+complete -c gleam -n '__fish_seen_subcommand_from update' -rf -a '(__fish_gleam_deps_all)'
 
 # Publish: hex publish
 complete -c gleam -n '__fish_seen_subcommand_from hex' -a retire   -d "Retire a release from Hex"
