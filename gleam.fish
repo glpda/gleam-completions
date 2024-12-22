@@ -82,7 +82,8 @@ complete -c gleam -n '__fish_seen_subcommand_from add' -rf -a '(__fish_gleam_hex
 complete -c gleam -n '__fish_seen_subcommand_from deps' -a list     -d "List all dependency packages"
 complete -c gleam -n '__fish_seen_subcommand_from deps' -a download -d "Download all dependency packages"
 complete -c gleam -n '__fish_seen_subcommand_from deps' -a update   -d "Update dependencies to their latest versions"
-complete -c gleam -n '__fish_seen_subcommand_from remove update' -rf -a '(__fish_gleam_dependencies)'
+complete -c gleam -n '__fish_seen_subcommand_from remove' -rf -a '(__fish_gleam_dependencies)'
+complete -c gleam -n '__fish_seen_subcommand_from update' -rf -a '(gleam deps list | string split -f1 " ")'
 
 # Publish: hex publish
 complete -c gleam -n '__fish_seen_subcommand_from hex' -a retire   -d "Retire a release from Hex"
