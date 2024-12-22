@@ -21,9 +21,18 @@ function __fish_gleam_runnable_module
 end
 
 function __fish_gleam_dependencies
-    # TODO 'gleam deps list' gives all dependency packages
-    # but 'gleam remove' takes only direct project dependencies
-    # listed in 'gleam.toml'
+    # 'gleam deps list' gives all dependencies but 'gleam remove' takes only
+    # direct project dependencies listed in 'gleam.toml'
+    set -l project_root (__fish_gleam_project_root)
+    set -l current_table ''
+    cat $project_root/gleam.toml | while read -l line
+        if string match -q '[*]' $line
+            set current_table $line
+        else if string match -q $current_table '[dependencies]' '[dev-dependencies]'
+            set -f dependencies $dependencies (string split -n -m1 -f1 "=" $line | string trim)
+        end
+    end
+    printf '%s\n' $dependencies
 end
 
 function __fish_gleam_hex_packages
