@@ -31,7 +31,7 @@ function __fish_gleam_deps_direct
         if string match -q '[*]' $line
             set current_table $line
         else if string match -q $current_table '[dependencies]' '[dev-dependencies]'
-            set -f dependencies $dependencies (string split -n -m1 -f1 "=" $line | string trim)
+            set -f dependencies $dependencies (string split -n -f1 "=" $line | string trim)
         end
     end
     printf '%s\n' $dependencies
