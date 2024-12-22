@@ -23,7 +23,9 @@ end
 function __fish_gleam_dependencies
     # 'gleam deps list' gives all dependencies but 'gleam remove' takes only
     # direct project dependencies listed in 'gleam.toml'
-    set -l project_root (__fish_gleam_project_root)
+    if not set -l project_root (__fish_gleam_project_root)
+        return 1
+    end
     set -l current_table ''
     cat $project_root/gleam.toml | while read -l line
         if string match -q '[*]' $line
@@ -33,6 +35,7 @@ function __fish_gleam_dependencies
         end
     end
     printf '%s\n' $dependencies
+    return 0
 end
 
 function __fish_gleam_hex_packages
