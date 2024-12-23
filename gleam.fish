@@ -28,7 +28,9 @@ function __fish_gleam_deps_direct
     end
     set -l current_table ''
     cat $project_root/gleam.toml | while read -l line
-        if string match -q '[*]' $line
+        if string match -q -r '^[ \t]*#' $line
+            continue
+        else if string match -q '[*]' $line
             set current_table $line
         else if string match -q $current_table '[dependencies]' '[dev-dependencies]'
             set -f dependencies $dependencies (string split -n -f1 "=" $line | string trim)
