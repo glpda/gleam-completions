@@ -27,13 +27,16 @@ function __fish_gleam_deps_direct
         return 1
     end
     set -l current_table ''
-    cat $project_root/gleam.toml | while read -l line
-        if string match -q -r '^[ \t]*#' $line
-            continue
-        else if string match -q '[*]' $line
+    # does not properly escape "#" inside a string but it should not matter
+    # since we only care about the keys (packages' names) and tables' names
+    # and those should not contain any "#"
+    string replace -r '#.*' '' <$project_root/gleam.toml | string trim \
+    | while read -l line
+        if string match -q '[*]' $line
             set current_table $line
         else if string match -q $current_table '[dependencies]' '[dev-dependencies]'
-            set -f dependencies $dependencies (string split -n -f1 "=" $line | string trim)
+            set -f dependencies $dependencies \
+            (string split -n -f1 "=" $line | string trim)
         end
     end
     printf '%s\n' $dependencies
