@@ -18,7 +18,12 @@ end
 
 function __fish_gleam_runnable_module
     # TODO list files under src and test with a main function
+    # NOTE files under 'build/packages/*/src' can also be run
+    # NOTE may handle path completion 'gleam run -m package/module'
 end
+
+# TODO add completion for runnable module arguments?
+# NOTE maybe too complex (requires parsing gleam)
 
 function __fish_gleam_deps_direct
     # 'gleam deps list' gives all dependencies but 'gleam remove' takes only
