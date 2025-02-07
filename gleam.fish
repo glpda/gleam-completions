@@ -90,6 +90,10 @@ complete -c gleam -n __fish_use_subcommand -a update  -d "Update dependencies to
 complete -c gleam -s h -l help -d 'Print help'
 complete -c gleam -n "__fish_prev_arg_in help; and __fish_is_nth_token 2" -r -a "$commands"
 complete -c gleam -n "__fish_seen_subcommand_from $commands_with_help; and __fish_is_nth_token 2" -a help -d "Print help"
+complete -c gleam -n '__fish_seen_subcommand_from deps; and __fish_prev_arg_in help' -a "list tree download update"
+complete -c gleam -n '__fish_seen_subcommand_from docs; and __fish_prev_arg_in help' -a "build publish remove"
+complete -c gleam -n '__fish_seen_subcommand_from export; and __fish_prev_arg_in help' -a "erlang-shipment hex-tarball javascript-prelude typescript-prelude package-interface"
+complete -c gleam -n '__fish_seen_subcommand_from hex; and __fish_prev_arg_in help' -a "retire unretire revert authenticate"
 
 # Compile: build check run test
 complete -c gleam -n '__fish_seen_subcommand_from build check run test' -s t -l target -rf -a "$targets" -d "The platform to target"
