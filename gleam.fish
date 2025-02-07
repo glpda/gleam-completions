@@ -88,7 +88,7 @@ complete -c gleam -n __fish_use_subcommand -a update  -d "Update dependencies to
 
 # Help
 complete -c gleam -s h -l help -d 'Print help'
-complete -c gleam -n "__fish_prev_arg_in help" -r -a "$commands"
+complete -c gleam -n "__fish_prev_arg_in help; and __fish_is_nth_token 2" -r -a "$commands"
 complete -c gleam -n "__fish_seen_subcommand_from $commands_with_help; and __fish_is_nth_token 2" -a help -d "Print help"
 
 # Compile: build check run test
