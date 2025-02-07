@@ -14,7 +14,7 @@ Some caveats:
   not work with unusually written files;
 - It's my first fish completion, so there may be some mistakes;
 
-To install save `gleam.fish` in `$XDG_DATA_HOME`
-(should default to `~/.config/fish/completions`)
+To install save `gleam.fish` in `$XDG_CONFIG_HOME/fish/completions`
+(usually `~/.config/fish/completions`)
 or any other directory in `$fish_complete_path`
 
