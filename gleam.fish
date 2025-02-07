@@ -115,10 +115,11 @@ complete -c gleam -n '__fish_prev_arg_in remove; and __fish_is_nth_token 2' -rf 
 complete -c gleam -n '__fish_prev_arg_in update' -rf -a '(__fish_gleam_deps_all)'
 
 # Publish: hex publish
-complete -c gleam -n '__fish_prev_arg_in hex' -a retire   -d "Retire a release from Hex"
+complete -c gleam -n '__fish_prev_arg_in hex' -a authenticate -d "Authenticate with Hex"
+complete -c gleam -n '__fish_prev_arg_in hex' -a retire -d "Retire a release from Hex"
+complete -c gleam -n '__fish_prev_arg_in retire' -r -a '(__fish_gleam_hex_packages)'
 complete -c gleam -n '__fish_prev_arg_in hex' -a unretire -d "Un-retire a release from Hex"
 complete -c gleam -n '__fish_prev_arg_in hex' -a revert   -d "Revert a release from Hex"
-complete -c gleam -n '__fish_prev_arg_in retire' -r -a '(__fish_gleam_hex_packages)'
 complete -c gleam -n '__fish_seen_subcommand_from revert' -l package -rf -a '(__fish_gleam_hex_packages)'
 complete -c gleam -n '__fish_seen_subcommand_from revert' -l version -rf
 complete -c gleam -n '__fish_seen_subcommand_from publish; and not __fish_seen_subcommand_from docs' -l replace
