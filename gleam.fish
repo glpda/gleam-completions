@@ -99,42 +99,42 @@ complete -c gleam -n '__fish_seen_subcommand_from build run; and not __fish_seen
 complete -c gleam -n '__fish_seen_subcommand_from run' -s m -l module -rf -a '(__fish_gleam_runnable_module)' -d "The module to run"
 
 # Dependencies: add deps remove update
-complete -c gleam -n '__fish_seen_subcommand_from add' -l dev -rf -a '(__fish_gleam_hex_packages)'
-complete -c gleam -n '__fish_seen_subcommand_from add' -rf -a '(__fish_gleam_hex_packages)'
-complete -c gleam -n '__fish_seen_subcommand_from deps' -a list     -d "List all dependency packages"
-complete -c gleam -n '__fish_seen_subcommand_from deps' -a tree     -d "Tree of all the dependency packages"
-complete -c gleam -n '__fish_seen_subcommand_from tree' -l package -rfa '(__fish_gleam_deps_all)' -d "Package to be used as the root of the tree"
-complete -c gleam -n '__fish_seen_subcommand_from tree' -l invert  -rfa '(__fish_gleam_deps_all)' -d "Invert the tree direction and focus on the given package"
-complete -c gleam -n '__fish_seen_subcommand_from deps' -a download -d "Download all dependency packages"
-complete -c gleam -n '__fish_seen_subcommand_from deps' -a update   -d "Update dependencies to their latest versions"
-complete -c gleam -n '__fish_seen_subcommand_from remove' -rf -a '(__fish_gleam_deps_direct)'
-complete -c gleam -n '__fish_seen_subcommand_from update' -rf -a '(__fish_gleam_deps_all)'
+complete -c gleam -n '__fish_prev_arg_in add' -l dev -rf -a '(__fish_gleam_hex_packages)'
+complete -c gleam -n '__fish_prev_arg_in add' -rf -a '(__fish_gleam_hex_packages)'
+complete -c gleam -n '__fish_prev_arg_in deps' -a list     -d "List all dependency packages"
+complete -c gleam -n '__fish_prev_arg_in deps' -a download -d "Download all dependency packages"
+complete -c gleam -n '__fish_prev_arg_in deps' -a update   -d "Update dependencies to their latest versions"
+complete -c gleam -n '__fish_prev_arg_in deps' -a tree     -d "Tree of all the dependency packages"
+complete -c gleam -n '__fish_prev_arg_in tree' -l package -rfa '(__fish_gleam_deps_all)' -d "Package to be used as the root of the tree"
+complete -c gleam -n '__fish_prev_arg_in tree' -l invert  -rfa '(__fish_gleam_deps_all)' -d "Invert the tree direction and focus on the given package"
+complete -c gleam -n '__fish_prev_arg_in remove; and __fish_is_nth_token 2' -rf -a '(__fish_gleam_deps_direct)'
+complete -c gleam -n '__fish_prev_arg_in update' -rf -a '(__fish_gleam_deps_all)'
 
 # Publish: hex publish
-complete -c gleam -n '__fish_seen_subcommand_from hex' -a retire   -d "Retire a release from Hex"
-complete -c gleam -n '__fish_seen_subcommand_from hex' -a unretire -d "Un-retire a release from Hex"
-complete -c gleam -n '__fish_seen_subcommand_from hex' -a revert   -d "Revert a release from Hex"
-complete -c gleam -n '__fish_seen_subcommand_from retire' -r -a '(__fish_gleam_hex_packages)'
+complete -c gleam -n '__fish_prev_arg_in hex' -a retire   -d "Retire a release from Hex"
+complete -c gleam -n '__fish_prev_arg_in hex' -a unretire -d "Un-retire a release from Hex"
+complete -c gleam -n '__fish_prev_arg_in hex' -a revert   -d "Revert a release from Hex"
+complete -c gleam -n '__fish_prev_arg_in retire' -r -a '(__fish_gleam_hex_packages)'
 complete -c gleam -n '__fish_seen_subcommand_from revert' -l package -rf -a '(__fish_gleam_hex_packages)'
 complete -c gleam -n '__fish_seen_subcommand_from revert' -l version -rf
 complete -c gleam -n '__fish_seen_subcommand_from publish; and not __fish_seen_subcommand_from docs' -l replace
 complete -c gleam -n '__fish_seen_subcommand_from publish; and not __fish_seen_subcommand_from docs' -s y -l yes
 
 # docs
-complete -c gleam -n '__fish_seen_subcommand_from docs' -a build   -d "Render HTML docs locally"
-complete -c gleam -n '__fish_seen_subcommand_from docs' -a publish -d "Publish HTML docs to HexDocs"
-complete -c gleam -n '__fish_seen_subcommand_from docs' -a remove  -d "Remove HTML docs from HexDocs"
+complete -c gleam -n '__fish_prev_arg_in docs' -a build   -d "Render HTML docs locally"
+complete -c gleam -n '__fish_prev_arg_in docs' -a publish -d "Publish HTML docs to HexDocs"
+complete -c gleam -n '__fish_prev_arg_in docs' -a remove  -d "Remove HTML docs from HexDocs"
 complete -c gleam -n '__fish_seen_subcommand_from docs; and __fish_seen_subcommand_from build' -l open -d "Open in a browser after rendering"
-complete -c gleam -n '__fish_seen_subcommand_from docs; and __fish_seen_subcommand_from remove' -l package -rf -d "The name of the package"
+complete -c gleam -n '__fish_seen_subcommand_from docs; and __fish_seen_subcommand_from remove' -l package -rf -a '(__fish_gleam_hex_packages)' -d "The name of the package"
 complete -c gleam -n '__fish_seen_subcommand_from docs; and __fish_seen_subcommand_from remove' -l version -rf -d "The version of the docs to remove"
 
 # export
-complete -c gleam -n '__fish_seen_subcommand_from export' -a erlang-shipment    -d "Precompiled Erlang, suitable for deployment"
-complete -c gleam -n '__fish_seen_subcommand_from export' -a hex-tarball        -d "A bundled tarball, suitable for publishing to Hex"
-complete -c gleam -n '__fish_seen_subcommand_from export' -a javascript-prelude -d "The JavaScript prelude module"
-complete -c gleam -n '__fish_seen_subcommand_from export' -a typescript-prelude -d "The TypeScript prelude module"
-complete -c gleam -n '__fish_seen_subcommand_from export' -a package-interface  -d "Information on the modules in JSON format"
-complete -c gleam -n '__fish_seen_subcommand_from package-interface' -l out -r -F  -d "The path to write the JSON file to"
+complete -c gleam -n '__fish_prev_arg_in export' -a erlang-shipment    -d "Precompiled Erlang, suitable for deployment"
+complete -c gleam -n '__fish_prev_arg_in export' -a hex-tarball        -d "A bundled tarball, suitable for publishing to Hex"
+complete -c gleam -n '__fish_prev_arg_in export' -a javascript-prelude -d "The JavaScript prelude module"
+complete -c gleam -n '__fish_prev_arg_in export' -a typescript-prelude -d "The TypeScript prelude module"
+complete -c gleam -n '__fish_prev_arg_in export' -a package-interface  -d "Information on the modules in JSON format"
+complete -c gleam -n '__fish_prev_arg_in package-interface' -l out -r -F  -d "The path to write the JSON file to"
 
 # format
 complete -c gleam -n '__fish_seen_subcommand_from format; and __fish_not_contain_opt stdin' -F
