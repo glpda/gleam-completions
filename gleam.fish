@@ -97,6 +97,9 @@ complete -c gleam -n '__fish_seen_subcommand_from run' -s m -l module -rf -a '(_
 complete -c gleam -n '__fish_seen_subcommand_from add' -l dev -rf -a '(__fish_gleam_hex_packages)'
 complete -c gleam -n '__fish_seen_subcommand_from add' -rf -a '(__fish_gleam_hex_packages)'
 complete -c gleam -n '__fish_seen_subcommand_from deps' -a list     -d "List all dependency packages"
+complete -c gleam -n '__fish_seen_subcommand_from deps' -a tree     -d "Tree of all the dependency packages"
+complete -c gleam -n '__fish_seen_subcommand_from tree' -l package -rfa '(__fish_gleam_deps_all)' -d "Package to be used as the root of the tree"
+complete -c gleam -n '__fish_seen_subcommand_from tree' -l invert  -rfa '(__fish_gleam_deps_all)' -d "Invert the tree direction and focus on the given package"
 complete -c gleam -n '__fish_seen_subcommand_from deps' -a download -d "Download all dependency packages"
 complete -c gleam -n '__fish_seen_subcommand_from deps' -a update   -d "Update dependencies to their latest versions"
 complete -c gleam -n '__fish_seen_subcommand_from remove' -rf -a '(__fish_gleam_deps_direct)'
