@@ -4,7 +4,6 @@ set -l commands add build check clean deps docs export fix format help hex lsp n
 set -l commands_with_help deps docs export hex
 set -l targets erlang javascript
 set -l runtimes nodejs deno bun
-set gleam_version (gleam -V | string split -f2 " " | string split ".")
 
 function __fish_gleam_project_root
     # get project root (parent dir with gleam.toml)
@@ -29,6 +28,7 @@ end
 function __fish_gleam_deps_direct
     # 'gleam deps list' gives all dependencies but 'gleam remove' takes only
     # direct project dependencies listed in 'gleam.toml'
+    set -l gleam_version (gleam -V | string split -f2 " " | string split ".")
     if test $gleam_version[1] -eq 1 -a $gleam_version[2] -ge 8
         __fish_gleam_deps_parse_tree
     else
