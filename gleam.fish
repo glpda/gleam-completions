@@ -29,7 +29,7 @@ end
 function __fish_gleam_deps_direct
     # 'gleam deps list' gives all dependencies but 'gleam remove' takes only
     # direct project dependencies listed in 'gleam.toml'
-    if test $gleam_version[1] -ge 1 -a $gleam_version[2] -ge 8
+    if test $gleam_version[1] -eq 1 -a $gleam_version[2] -ge 8
         __fish_gleam_deps_parse_tree
     else
         __fish_gleam_deps_parse_toml
