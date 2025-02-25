@@ -38,13 +38,13 @@ end
 
 function __fish_gleam_deps_parse_tree
     # 'gleam deps tree' gives an error when used outside a gleam project
-    if set -l project_root (__fish_gleam_project_root)
-        printf '%s\n' (gleam deps tree \
-            | string replace -f -r '^(├──|└──) ' '' \
-            | string split -n -f1 " " )
+    if gleam deps tree 2> /dev/null \
+        | string replace -f -r '^(├|└)── ' '' \
+        | string split -n -f1 " "
         return 0
+    else
+        return 1
     end
-    return 1
 end
 
 function __fish_gleam_deps_parse_toml
@@ -70,11 +70,12 @@ end
 
 function __fish_gleam_deps_all
     # 'gleam deps list' gives an error when used outside a gleam project
-    if set -l project_root (__fish_gleam_project_root)
-        printf '%s\n' (gleam deps list | string split -f1 " ")
+    if gleam deps list 2> /dev/null \
+        | string split -f1 " "
         return 0
+    else
+        return 1
     end
-    return 1
 end
 
 function __fish_gleam_hex_packages
