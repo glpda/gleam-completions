@@ -4,6 +4,7 @@ set -l commands add build check clean deps docs export fix format help hex lsp n
 set -l commands_with_help deps docs export hex
 set -l targets erlang javascript
 set -l runtimes nodejs deno bun
+set gleam_version (gleam -V | string split -f2 " " | string split ".")
 
 function __fish_gleam_project_root
     # get project root (parent dir with gleam.toml)
@@ -28,6 +29,25 @@ end
 function __fish_gleam_deps_direct
     # 'gleam deps list' gives all dependencies but 'gleam remove' takes only
     # direct project dependencies listed in 'gleam.toml'
+    if test $gleam_version[1] -ge 1 -a $gleam_version[2] -ge 8
+        __fish_gleam_deps_parse_tree
+    else
+        __fish_gleam_deps_parse_toml
+    end
+end
+
+function __fish_gleam_deps_parse_tree
+    # 'gleam deps tree' gives an error when used outside a gleam project
+    if set -l project_root (__fish_gleam_project_root)
+        printf '%s\n' (gleam deps tree \
+            | string replace -f -r '^(├──|└──) ' '' \
+            | string split -n -f1 " " )
+        return 0
+    end
+    return 1
+end
+
+function __fish_gleam_deps_parse_toml
     if not set -l project_root (__fish_gleam_project_root)
         return 1
     end
