@@ -113,7 +113,7 @@ complete -c gleam -n "__fish_prev_arg_in help; and __fish_is_nth_token 2" -r -a 
 complete -c gleam -n "__fish_seen_subcommand_from $commands_with_help; and __fish_is_nth_token 2" -a help -d "Print help"
 complete -c gleam -n '__fish_seen_subcommand_from deps; and __fish_prev_arg_in help' -a "list tree download update"
 complete -c gleam -n '__fish_seen_subcommand_from docs; and __fish_prev_arg_in help' -a "build publish remove"
-complete -c gleam -n '__fish_seen_subcommand_from export; and __fish_prev_arg_in help' -a "erlang-shipment hex-tarball javascript-prelude typescript-prelude package-interface"
+complete -c gleam -n '__fish_seen_subcommand_from export; and __fish_prev_arg_in help' -a "erlang-shipment hex-tarball javascript-prelude typescript-prelude package-interface package-information"
 complete -c gleam -n '__fish_seen_subcommand_from hex; and __fish_prev_arg_in help' -a "retire unretire revert authenticate"
 
 # Compile: build check run test
@@ -160,7 +160,8 @@ complete -c gleam -n '__fish_prev_arg_in export' -a hex-tarball        -d "A bun
 complete -c gleam -n '__fish_prev_arg_in export' -a javascript-prelude -d "The JavaScript prelude module"
 complete -c gleam -n '__fish_prev_arg_in export' -a typescript-prelude -d "The TypeScript prelude module"
 complete -c gleam -n '__fish_prev_arg_in export' -a package-interface  -d "Information on the modules in JSON format"
-complete -c gleam -n '__fish_prev_arg_in package-interface' -l out -r -F  -d "The path to write the JSON file to"
+complete -c gleam -n '__fish_prev_arg_in export' -a package-information -d "Information on the package (gleam.toml) in JSON format"
+complete -c gleam -n '__fish_prev_arg_in package-interface package-information' -l out -r -F  -d "The path to write the JSON file to"
 
 # format
 complete -c gleam -n '__fish_seen_subcommand_from format; and __fish_not_contain_opt stdin' -F
