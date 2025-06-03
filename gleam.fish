@@ -1,6 +1,6 @@
 # Fish Completions for Gleam
 
-set -l commands add build check clean deps docs export fix format help hex lsp new publish remove run shell test update
+set -l commands add build check clean deps dev docs export fix format help hex lsp new publish remove run shell test update
 set -l commands_with_help deps docs export hex
 set -l targets erlang javascript
 set -l runtimes nodejs deno bun
@@ -17,7 +17,7 @@ function __fish_gleam_project_root
 end
 
 function __fish_gleam_runnable_module
-    # TODO list files under src and test with a main function
+    # TODO list files under src, test and dev with a main function
     # NOTE files under 'build/packages/*/src' can also be run
     # NOTE may handle path completion 'gleam run -m package/module'
 end
@@ -92,6 +92,7 @@ complete -c gleam -n __fish_use_subcommand -a build   -d "Build the project"
 complete -c gleam -n __fish_use_subcommand -a check   -d "Type check the project"
 complete -c gleam -n __fish_use_subcommand -a clean   -d "Clean build artifacts"
 complete -c gleam -n __fish_use_subcommand -a deps    -d "Work with dependency packages"
+complete -c gleam -n __fish_use_subcommand -a dev     -d "Run the project development entrypoint"
 complete -c gleam -n __fish_use_subcommand -a docs    -d "Render HTML documentation"
 complete -c gleam -n __fish_use_subcommand -a export  -d "Export from the Gleam project"
 complete -c gleam -n __fish_use_subcommand -a fix     -d "Rewrite deprecated Gleam code"
@@ -116,9 +117,9 @@ complete -c gleam -n '__fish_seen_subcommand_from docs; and __fish_prev_arg_in h
 complete -c gleam -n '__fish_seen_subcommand_from export; and __fish_prev_arg_in help' -a "erlang-shipment hex-tarball javascript-prelude typescript-prelude package-interface package-information"
 complete -c gleam -n '__fish_seen_subcommand_from hex; and __fish_prev_arg_in help' -a "retire unretire revert authenticate"
 
-# Compile: build check run test
-complete -c gleam -n '__fish_seen_subcommand_from build check run test' -s t -l target -rf -a "$targets" -d "The platform to target"
-complete -c gleam -n '__fish_seen_subcommand_from run test' -l runtime -rf -a "$runtimes" -d "The runtime to target"
+# Compile: build check run test dev
+complete -c gleam -n '__fish_seen_subcommand_from build check run test dev' -s t -l target -rf -a "$targets" -d "The platform to target"
+complete -c gleam -n '__fish_seen_subcommand_from run test dev' -l runtime -rf -a "$runtimes" -d "The runtime to target"
 complete -c gleam -n '__fish_seen_subcommand_from build; and not __fish_seen_subcommand_from docs' -l warnings-as-errors -d "Emit compile time warnings as errors"
 complete -c gleam -n '__fish_seen_subcommand_from build run; and not __fish_seen_subcommand_from docs' -l no-print-progress -d "Don't print progress information"
 complete -c gleam -n '__fish_seen_subcommand_from run' -s m -l module -rf -a '(__fish_gleam_runnable_module)' -d "The module to run"
