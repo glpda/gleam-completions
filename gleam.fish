@@ -70,12 +70,11 @@ end
 
 function __fish_gleam_deps_all
     # 'gleam deps list' gives an error when used outside a gleam project
-    if gleam deps list 2> /dev/null \
-        | string split -f1 " "
-        return 0
-    else
-        return 1
-    end
+    gleam deps list 2> /dev/null \
+    | string split -f1 " " \
+    | string match --invert --regex "Package|-"
+    and return 0
+    or return 1
 end
 
 function __fish_gleam_hex_packages
