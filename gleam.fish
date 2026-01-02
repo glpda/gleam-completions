@@ -112,7 +112,7 @@ complete -c gleam -n __fish_use_subcommand -a update  -d "Update dependencies to
 complete -c gleam -s h -l help -d 'Print help'
 complete -c gleam -n "__fish_prev_arg_in help; and __fish_is_nth_token 2" -r -a "$commands"
 complete -c gleam -n "__fish_seen_subcommand_from $commands_with_help; and __fish_is_nth_token 2" -a help -d "Print help"
-complete -c gleam -n '__fish_seen_subcommand_from deps; and __fish_prev_arg_in help' -a "list tree download update"
+complete -c gleam -n '__fish_seen_subcommand_from deps; and __fish_prev_arg_in help' -a "list download outdated update tree"
 complete -c gleam -n '__fish_seen_subcommand_from docs; and __fish_prev_arg_in help' -a "build publish remove"
 complete -c gleam -n '__fish_seen_subcommand_from export; and __fish_prev_arg_in help' -a "erlang-shipment hex-tarball javascript-prelude typescript-prelude package-interface package-information"
 complete -c gleam -n '__fish_seen_subcommand_from hex; and __fish_prev_arg_in help' -a "retire unretire revert authenticate"
@@ -136,6 +136,7 @@ complete -c gleam -n '__fish_prev_arg_in add' -l dev -rf -a '(__fish_gleam_hex_p
 complete -c gleam -n '__fish_prev_arg_in add' -rf -a '(__fish_gleam_hex_packages)'
 complete -c gleam -n '__fish_prev_arg_in deps' -a list     -d "List all dependency packages"
 complete -c gleam -n '__fish_prev_arg_in deps' -a download -d "Download all dependency packages"
+complete -c gleam -n '__fish_prev_arg_in deps' -a outdated -d "List all outdated dependencies"
 complete -c gleam -n '__fish_prev_arg_in deps' -a update   -d "Update dependencies to their latest versions"
 complete -c gleam -n '__fish_prev_arg_in deps' -a tree     -d "Tree of all the dependency packages"
 complete -c gleam -n '__fish_prev_arg_in tree' -l package -rfa '(__fish_gleam_deps_all)' -d "Package to be used as the root of the tree"
