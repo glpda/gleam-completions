@@ -1,7 +1,6 @@
 # Fish Completions for Gleam
 
 set -l commands add build check clean deps dev docs export fix format help hex lsp new publish remove run shell test update
-set -l commands_with_help deps docs export hex
 set -l targets erlang javascript
 set -l runtimes nodejs deno bun
 
@@ -110,7 +109,7 @@ complete -c gleam -n __fish_use_subcommand -a update  -d "Update dependencies to
 # Help
 complete -c gleam -s h -l help -d 'Print help'
 complete -c gleam -n "__fish_prev_arg_in help; and __fish_is_nth_token 2" -r -a "$commands"
-complete -c gleam -n "__fish_seen_subcommand_from $commands_with_help; and __fish_is_nth_token 2" -a help -d "Print help"
+complete -c gleam -n "__fish_seen_subcommand_from deps docs export hex; and __fish_is_nth_token 2" -a help -d "Print help"
 complete -c gleam -n '__fish_seen_subcommand_from deps; and __fish_prev_arg_in help' -a "list download outdated update tree"
 complete -c gleam -n '__fish_seen_subcommand_from docs; and __fish_prev_arg_in help' -a "build publish remove"
 complete -c gleam -n '__fish_seen_subcommand_from export; and __fish_prev_arg_in help' -a "erlang-shipment hex-tarball javascript-prelude typescript-prelude package-interface package-information"
