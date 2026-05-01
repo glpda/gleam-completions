@@ -130,7 +130,7 @@ complete -c gleam -n '__fish_seen_subcommand_from compile-package' -l no-beam -d
 
 
 # Dependencies: add deps remove update
-complete -c gleam -n '__fish_prev_arg_in add' -l dev -rf -a '(__fish_gleam_hex_packages)'
+complete -c gleam -n '__fish_prev_arg_in add; and __fish_is_nth_token 2' -l dev -rf -a '(__fish_gleam_hex_packages)'
 complete -c gleam -n '__fish_prev_arg_in add' -rf -a '(__fish_gleam_hex_packages)'
 complete -c gleam -n '__fish_prev_arg_in deps' -a list     -d "List all dependency packages"
 complete -c gleam -n '__fish_prev_arg_in deps' -a download -d "Download all dependency packages"
@@ -145,6 +145,9 @@ complete -c gleam -n '__fish_prev_arg_in update' -rf -a '(__fish_gleam_deps_all)
 # Publish: hex publish
 complete -c gleam -n '__fish_prev_arg_in hex' -a authenticate -d "Authenticate with Hex"
 complete -c gleam -n '__fish_prev_arg_in hex' -a owner -d "Deal with package ownership"
+complete -c gleam -n '__fish_prev_arg_in owner' -a add -d "Adds a new owner to the given package on Hex"
+complete -c gleam -n '__fish_seen_subcommand_from owner; and __fish_seen_subcommand_from add' -l user -x -d 'The username or email of the additional owner'
+complete -c gleam -n '__fish_seen_subcommand_from owner; and __fish_seen_subcommand_from add' -l level -xa 'maintainer full' -d 'The ownership level'
 complete -c gleam -n '__fish_prev_arg_in owner' -a transfer -d "Give package ownership to a new Hex user"
 complete -c gleam -n '__fish_seen_subcommand_from transfer' -l to -rf -d 'The username or email of the new owner'
 complete -c gleam -n '__fish_prev_arg_in hex' -a retire   -d "Retire a release from Hex"
