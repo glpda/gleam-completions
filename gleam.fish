@@ -112,7 +112,7 @@ complete -c gleam -n "__fish_prev_arg_in help; and __fish_is_nth_token 2" -r -a 
 complete -c gleam -n "__fish_seen_subcommand_from deps docs export hex; and __fish_is_nth_token 2" -a help -d "Print help"
 complete -c gleam -n '__fish_seen_subcommand_from deps; and __fish_prev_arg_in help' -a "list download outdated update tree"
 complete -c gleam -n '__fish_seen_subcommand_from docs; and __fish_prev_arg_in help' -a "build publish remove"
-complete -c gleam -n '__fish_seen_subcommand_from export; and __fish_prev_arg_in help' -a "erlang-shipment hex-tarball javascript-prelude typescript-prelude package-interface package-information"
+complete -c gleam -n '__fish_seen_subcommand_from export; and __fish_prev_arg_in help' -a "erlang-shipment escript hex-tarball javascript-prelude typescript-prelude package-interface package-information"
 complete -c gleam -n '__fish_seen_subcommand_from hex; and __fish_prev_arg_in help' -a "retire unretire revert owner authenticate"
 
 # Compile: build check run test dev compile-package
@@ -169,6 +169,7 @@ complete -c gleam -n '__fish_seen_subcommand_from docs; and __fish_seen_subcomma
 
 # export
 complete -c gleam -n '__fish_prev_arg_in export' -a erlang-shipment    -d "Precompiled Erlang, suitable for deployment"
+complete -c gleam -n '__fish_prev_arg_in export' -a escript            -d "Precompiled Erlang in a single file, suitable for CLIs"
 complete -c gleam -n '__fish_prev_arg_in export' -a hex-tarball        -d "A bundled tarball, suitable for publishing to Hex"
 complete -c gleam -n '__fish_prev_arg_in export' -a javascript-prelude -d "The JavaScript prelude module"
 complete -c gleam -n '__fish_prev_arg_in export' -a typescript-prelude -d "The TypeScript prelude module"
