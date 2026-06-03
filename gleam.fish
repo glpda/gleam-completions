@@ -119,7 +119,7 @@ complete -c gleam -n '__fish_seen_subcommand_from hex; and __fish_prev_arg_in he
 complete -c gleam -n '__fish_seen_subcommand_from build check run test dev' -s t -l target -rf -a "$targets" -d "The platform to target"
 complete -c gleam -n '__fish_seen_subcommand_from run test dev' -l runtime -rf -a "$runtimes" -d "The runtime to target"
 complete -c gleam -n '__fish_seen_subcommand_from build; and not __fish_seen_subcommand_from docs' -l warnings-as-errors -d "Emit compile time warnings as errors"
-complete -c gleam -n '__fish_seen_subcommand_from build run; and not __fish_seen_subcommand_from docs' -l no-print-progress -d "Don't print progress information"
+complete -c gleam -n '__fish_seen_subcommand_from build run dev; and not __fish_seen_subcommand_from docs' -l no-print-progress -d "Don't print progress information"
 complete -c gleam -n '__fish_seen_subcommand_from run' -s m -l module -rf -a '(__fish_gleam_runnable_module)' -d "The module to run"
 complete -c gleam -n '__fish_seen_subcommand_from compile-package' -l target -rf -a "$targets" -d "The compilation target for the generated project"
 complete -c gleam -n '__fish_seen_subcommand_from compile-package' -l package -rF -d "The directory of the Gleam package"
