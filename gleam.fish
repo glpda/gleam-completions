@@ -148,12 +148,13 @@ complete -c gleam -n '__fish_prev_arg_in hex' -a owner -d "Deal with package own
 complete -c gleam -n '__fish_prev_arg_in owner' -a add -d "Adds a new owner to the given package on Hex"
 complete -c gleam -n '__fish_seen_subcommand_from owner; and __fish_seen_subcommand_from add' -l user -x -d 'The username or email of the additional owner'
 complete -c gleam -n '__fish_seen_subcommand_from owner; and __fish_seen_subcommand_from add' -l level -xa 'maintainer full' -d 'The ownership level'
+complete -c gleam -n '__fish_seen_subcommand_from owner; and __fish_seen_subcommand_from add' -l package -xa '(__fish_gleam_hex_packages)' -d 'The name of the package'
 complete -c gleam -n '__fish_prev_arg_in owner' -a transfer -d "Give package ownership to a new Hex user"
-complete -c gleam -n '__fish_seen_subcommand_from transfer' -l to -rf -d 'The username or email of the new owner'
+complete -c gleam -n '__fish_seen_subcommand_from transfer' -l user -x -d 'The username or email of the new owner'
 complete -c gleam -n '__fish_prev_arg_in hex' -a retire   -d "Retire a release from Hex"
 complete -c gleam -n '__fish_prev_arg_in hex' -a unretire -d "Un-retire a release from Hex"
 complete -c gleam -n '__fish_prev_arg_in hex' -a revert   -d "Revert a release from Hex"
-complete -c gleam -n '__fish_seen_subcommand_from retire unretire revert transfer' -l package -rf -a '(__fish_gleam_hex_packages)'
+complete -c gleam -n '__fish_seen_subcommand_from retire unretire revert transfer' -l package -xa '(__fish_gleam_hex_packages)' -d 'The name of the package'
 complete -c gleam -n '__fish_seen_subcommand_from retire unretire revert' -l version -rf
 complete -c gleam -n '__fish_seen_subcommand_from retire' -l reason -xa 'other invalid security deprecated renamed'
 complete -c gleam -n '__fish_seen_subcommand_from publish; and not __fish_seen_subcommand_from docs' -l replace
