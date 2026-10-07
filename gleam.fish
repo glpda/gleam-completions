@@ -126,7 +126,8 @@ complete -c gleam -n '__fish_seen_subcommand_from compile-package' -l package -r
 complete -c gleam -n '__fish_seen_subcommand_from compile-package' -l out -rF -d "A directory to write compiled package to"
 complete -c gleam -n '__fish_seen_subcommand_from compile-package' -l lib -rF -d "A directory of precompiled Gleam projects"
 complete -c gleam -n '__fish_seen_subcommand_from compile-package' -l javascript-prelude -r -d "The location of the JavaScript prelude module, relative to the `out` directory"
-complete -c gleam -n '__fish_seen_subcommand_from compile-package' -l no-beam -d "Skip Erlang to BEAM bytecode compilation if given"
+complete -c gleam -n '__fish_seen_subcommand_from compile-package' -l no-beam -d "Skip Erlang to BEAM bytecode compilation"
+complete -c gleam -n '__fish_seen_subcommand_from compile-package' -l no-dev  -d "Skip development code compilation, dev/, test/, and dev_dependencies"
 
 
 # Dependencies: add deps remove update
