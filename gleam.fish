@@ -128,7 +128,7 @@ complete -c gleam -n '__fish_seen_subcommand_from compile-package' -l lib -rF -d
 complete -c gleam -n '__fish_seen_subcommand_from compile-package' -l javascript-prelude -r -d "The location of the JavaScript prelude module, relative to the `out` directory"
 complete -c gleam -n '__fish_seen_subcommand_from compile-package' -l no-beam -d "Skip Erlang to BEAM bytecode compilation"
 complete -c gleam -n '__fish_seen_subcommand_from compile-package' -l no-dev  -d "Skip development code compilation, dev/, test/, and dev_dependencies"
-
+complete -c gleam -n '__fish_seen_subcommand_from compile-package' -l otp-app-names -x -d "OTP application names for dependencies, in the form `package=otp_app`, separated by commas"
 
 # Dependencies: add deps remove update
 complete -c gleam -n '__fish_prev_arg_in add; and __fish_is_nth_token 2' -l dev -rf -a '(__fish_gleam_hex_packages)'
