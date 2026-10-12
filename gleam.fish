@@ -177,7 +177,7 @@ complete -c gleam -n '__fish_prev_arg_in export' -a javascript-prelude -d "The J
 complete -c gleam -n '__fish_prev_arg_in export' -a typescript-prelude -d "The TypeScript prelude module"
 complete -c gleam -n '__fish_prev_arg_in export' -a package-interface  -d "Information on the modules in JSON format"
 complete -c gleam -n '__fish_prev_arg_in export' -a package-information -d "Information on the package (gleam.toml) in JSON format"
-complete -c gleam -n '__fish_prev_arg_in package-interface package-information' -l out -r -F  -d "The path to write the JSON file to"
+complete -c gleam -n '__fish_prev_arg_in javascript-prelude typescript-prelude package-interface package-information' -l out -F -d "The path to write the file to"
 
 # format
 complete -c gleam -n '__fish_seen_subcommand_from format; and __fish_not_contain_opt stdin' -F
