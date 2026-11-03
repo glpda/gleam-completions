@@ -85,27 +85,30 @@ complete -c gleam --no-files
 complete -c gleam -n __fish_use_subcommand -s V -l version -d 'Print version'
 
 # Subcommands
-complete -c gleam -n __fish_use_subcommand -a add             -d "Add new project dependencies"
-complete -c gleam -n __fish_use_subcommand -a build           -d "Build the project"
-complete -c gleam -n __fish_use_subcommand -a check           -d "Type check the project"
-complete -c gleam -n __fish_use_subcommand -a clean           -d "Clean build artifacts"
-complete -c gleam -n __fish_use_subcommand -a compile-package -d "A low-level API for compiling a single Gleam package"
-complete -c gleam -n __fish_use_subcommand -a deps            -d "Work with dependency packages"
-complete -c gleam -n __fish_use_subcommand -a dev             -d "Run the project development entrypoint"
-complete -c gleam -n __fish_use_subcommand -a docs            -d "Render HTML documentation"
-complete -c gleam -n __fish_use_subcommand -a export          -d "Export from the Gleam project"
-complete -c gleam -n __fish_use_subcommand -a fix             -d "Rewrite deprecated Gleam code"
-complete -c gleam -n __fish_use_subcommand -a format          -d "Format source code"
-complete -c gleam -n __fish_use_subcommand -a help            -d "Print help for the given subcommand(s)"
-complete -c gleam -n __fish_use_subcommand -a hex             -d "Work with the Hex package manager"
-complete -c gleam -n __fish_use_subcommand -a lsp             -d "Run the language server, to be used by editors"
-complete -c gleam -n __fish_use_subcommand -a new             -d "Create a new project"
-complete -c gleam -n __fish_use_subcommand -a publish         -d "Publish the project to the Hex package manager"
-complete -c gleam -n __fish_use_subcommand -a remove          -d "Remove project dependencies"
-complete -c gleam -n __fish_use_subcommand -a run             -d "Run the project"
-complete -c gleam -n __fish_use_subcommand -a shell           -d "Start an Erlang shell"
-complete -c gleam -n __fish_use_subcommand -a test            -d "Run the project tests"
-complete -c gleam -n __fish_use_subcommand -a update          -d "Update dependencies to their latest versions"
+complete -c gleam -n __fish_use_subcommand -a add     -d "Add new project dependencies"
+complete -c gleam -n __fish_use_subcommand -a build   -d "Build the project"
+complete -c gleam -n __fish_use_subcommand -a check   -d "Type check the project"
+complete -c gleam -n __fish_use_subcommand -a clean   -d "Clean build artifacts"
+complete -c gleam -n __fish_use_subcommand -a deps    -d "Work with dependency packages"
+complete -c gleam -n __fish_use_subcommand -a dev     -d "Run the project development entrypoint"
+complete -c gleam -n __fish_use_subcommand -a docs    -d "Render HTML documentation"
+complete -c gleam -n __fish_use_subcommand -a export  -d "Export from the Gleam project"
+complete -c gleam -n __fish_use_subcommand -a fix     -d "Rewrite deprecated Gleam code"
+complete -c gleam -n __fish_use_subcommand -a format  -d "Format source code"
+complete -c gleam -n __fish_use_subcommand -a help    -d "Print help for the given subcommand(s)"
+complete -c gleam -n __fish_use_subcommand -a hex     -d "Work with the Hex package manager"
+complete -c gleam -n __fish_use_subcommand -a lsp     -d "Run the language server, to be used by editors"
+complete -c gleam -n __fish_use_subcommand -a new     -d "Create a new project"
+complete -c gleam -n __fish_use_subcommand -a publish -d "Publish the project to the Hex package manager"
+complete -c gleam -n __fish_use_subcommand -a remove  -d "Remove project dependencies"
+complete -c gleam -n __fish_use_subcommand -a run     -d "Run the project"
+complete -c gleam -n __fish_use_subcommand -a shell   -d "Start an Erlang shell"
+complete -c gleam -n __fish_use_subcommand -a test    -d "Run the project tests"
+complete -c gleam -n __fish_use_subcommand -a update  -d "Update dependencies to their latest versions"
+# "compile-package" is hidden on purpose because it is meant primarily for other
+# build tools and not for direct human use. I you want to enable its completion
+# uncomment the following line.
+# complete -c gleam -n __fish_use_subcommand -a compile-package -d "A low-level API for compiling a single Gleam package"
 
 # Help
 complete -c gleam -s h -l help -d 'Print help'
