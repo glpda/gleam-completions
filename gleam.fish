@@ -1,6 +1,6 @@
 # Fish Completions for Gleam
 
-set -l commands add build check clean deps dev docs export fix format help hex lsp new publish remove run shell test update
+set -l commands add build check clean compile-package deps dev docs export fix format help hex lsp new publish remove run shell test update
 set -l targets erlang javascript
 set -l runtimes nodejs deno bun
 
@@ -105,6 +105,10 @@ complete -c gleam -n __fish_use_subcommand -a run     -d "Run the project"
 complete -c gleam -n __fish_use_subcommand -a shell   -d "Start an Erlang shell"
 complete -c gleam -n __fish_use_subcommand -a test    -d "Run the project tests"
 complete -c gleam -n __fish_use_subcommand -a update  -d "Update dependencies to their latest versions"
+# "compile-package" is hidden on purpose because it is meant primarily for other
+# build tools and not for direct human use. I you want to enable its completion
+# uncomment the following line.
+# complete -c gleam -n __fish_use_subcommand -a compile-package -d "A low-level API for compiling a single Gleam package"
 
 # Help
 complete -c gleam -s h -l help -d 'Print help'
